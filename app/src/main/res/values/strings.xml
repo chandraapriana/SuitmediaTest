@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">SuitmediaTest</string>
+    <string name="masukan_nama">Masukan nama</string>
+    <string name="next">Next</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="choose_event">Pilih Event</string>
+    <string name="choose_guest">Pilih Guest</string>
 </resources>

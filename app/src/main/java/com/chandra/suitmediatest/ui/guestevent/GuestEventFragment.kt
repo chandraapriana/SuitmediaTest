@@ -1,5 +1,7 @@
 package com.chandra.suitmediatest.ui.guestevent
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,13 +11,14 @@ import com.chandra.suitmediatest.R
 import com.chandra.suitmediatest.databinding.FragmentGuestEventBinding
 import com.chandra.suitmediatest.ui.guestevent.event.EventFragment
 import com.chandra.suitmediatest.ui.guestevent.guest.GuestFragment
+import com.chandra.suitmediatest.utils.SHARED_PREFERENCE_KEY
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import java.lang.StringBuilder
 
 class GuestEventFragment : Fragment(), View.OnClickListener {
     private lateinit var binding: FragmentGuestEventBinding
+    private val viewModel: GuestEventViewModel by sharedViewModel()
 
-    companion object {
-        const val NAME = "name"
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,8 +32,15 @@ class GuestEventFragment : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewModel.name.observe(viewLifecycleOwner, {
+            binding.tvName.text = StringBuilder("Nama : $it")
+        })
 
-        binding.tvName.text = requireArguments().getString(NAME)
+        viewModel.nameGuest.observe(viewLifecycleOwner, {
+            if (it != null) {
+                binding.btnGuest.text = it
+            }
+        })
 
         binding.btnEvent.setOnClickListener(this)
         binding.btnGuest.setOnClickListener(this)

@@ -25,7 +25,7 @@ class GuestAdapter: RecyclerView.Adapter<GuestAdapter.GuestViewHolder>() {
         val guest = listGuest[position]
         holder.binding.apply {
             tvName.text = guest.name
-            Glide.with(holder.itemView.context).load(guest.image).apply(RequestOptions().override(180,180)).into(imgGuest)
+            Glide.with(holder.itemView.context).load(guest.image).into(imgGuest)
             root.setOnClickListener { onItemClickCallback?.onItemClicked(guest) }
         }
     }

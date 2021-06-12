@@ -49,7 +49,6 @@ class GuestEventFragment : Fragment(), View.OnClickListener {
 
         viewModel.date?.observe(viewLifecycleOwner, {
             if (it != null) {
-
                 val date = DateConverter.getDate(it)
                 val phoneType = PhoneType.getPhoneType(date)
                 Toast.makeText(context, phoneType, Toast.LENGTH_SHORT).show()

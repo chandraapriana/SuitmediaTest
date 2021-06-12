@@ -35,6 +35,7 @@ class GuestFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         lifecycleScope.launch {
+            binding.progressbarGuest.visibility = View.VISIBLE
             val data = viewModel.getGuest()
             val guestAdapter = GuestAdapter()
             guestAdapter.setGuest(data)
@@ -57,6 +58,7 @@ class GuestFragment : Fragment() {
                         .commit()
                 }
             })
+            binding.progressbarGuest.visibility = View.GONE
         }
 
 

@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.chandra.suitmediatest.data.model.Event
 import com.chandra.suitmediatest.databinding.ItemEventBinding
+import com.chandra.suitmediatest.ui.guestevent.guest.GuestAdapter
 
 class EventAdapter: RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
     private var listEvent = ArrayList<Event>()
@@ -33,6 +34,10 @@ class EventAdapter: RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
 
     fun setEvent(event:List<Event>){
         this.listEvent.addAll(event)
+    }
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
     }
 
     interface OnItemClickCallback {

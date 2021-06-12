@@ -39,6 +39,14 @@ object DataDummy {
                 "https://eventbandung.id/wp-content/uploads/2021/05/MP-EB-Webinar-Kesehatan-MYHealtChat-Bdgcom_unity-28-Mei-2021-Copy.jpg"
             )
         )
+
+        listEvent.add(
+            Event(
+                "Level Up Class “Wirausaha? Siapa Takut!”",
+                "Jumat, 30 April 2021",
+                "https://eventbandung.id/wp-content/uploads/2021/05/MP-EB-Wirausaha-Siapa-Takut-Level-Up-Class-30-Apr-2021-Copy.jpg"
+            )
+        )
         return listEvent
     }
 

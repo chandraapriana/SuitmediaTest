@@ -7,15 +7,16 @@ import com.bumptech.glide.Glide
 import com.chandra.suitmediatest.data.model.Event
 import com.chandra.suitmediatest.databinding.ItemEventBinding
 
-class EventAdapter: RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
+class EventAdapter : RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
     private var listEvent = ArrayList<Event>()
     private var onItemClickCallback: OnItemClickCallback? = null
 
 
-    inner class EventViewHolder (val binding:ItemEventBinding):RecyclerView.ViewHolder(binding.root)
+    inner class EventViewHolder(val binding: ItemEventBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
-        val binding = ItemEventBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val binding = ItemEventBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return EventViewHolder(binding)
     }
 
@@ -29,9 +30,9 @@ class EventAdapter: RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
         }
     }
 
-    override fun getItemCount(): Int =listEvent.size
+    override fun getItemCount(): Int = listEvent.size
 
-    fun setEvent(event:List<Event>){
+    fun setEvent(event: List<Event>) {
         this.listEvent.addAll(event)
     }
 

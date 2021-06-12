@@ -15,10 +15,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val activityMainBinding:ActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
+        val activityMainBinding: ActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(activityMainBinding.root)
 
-        if(savedInstanceState == null){
+        if (savedInstanceState == null) {
             val homeFragment = HomeFragment()
             supportFragmentManager
                 .beginTransaction()
@@ -26,14 +26,11 @@ class MainActivity : AppCompatActivity() {
                 .commit()
         }
 
-        if(!InternetConnection.isOnline(this)){
+        if (!InternetConnection.isOnline(this)) {
             Toast.makeText(this, "Please Turn On Your Internet", Toast.LENGTH_LONG).show()
         }
 
     }
-
-
-
 
 
 }

@@ -15,7 +15,7 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 class HomeFragment : Fragment() {
 
     private lateinit var homeBinding: FragmentHomeBinding
-    private val viewModel : GuestEventViewModel by sharedViewModel()
+    private val viewModel: GuestEventViewModel by sharedViewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,9 +29,9 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         homeBinding.apply {
             btnNext.setOnClickListener {
-                if (edtName.text.isNullOrEmpty()){
+                if (edtName.text.isNullOrEmpty()) {
                     edtName.error = "Required"
-                }else{
+                } else {
                     viewModel.setName(edtName.text.toString())
                     val guestEventFragment = GuestEventFragment()
                     parentFragmentManager

@@ -7,16 +7,17 @@ import com.bumptech.glide.Glide
 import com.chandra.suitmediatest.data.model.Guest
 import com.chandra.suitmediatest.databinding.ItemGuestBinding
 
-class GuestAdapter: RecyclerView.Adapter<GuestAdapter.GuestViewHolder>() {
+class GuestAdapter : RecyclerView.Adapter<GuestAdapter.GuestViewHolder>() {
 
     private var listGuest = ArrayList<Guest>()
 
     private var onItemClickCallback: OnItemClickCallback? = null
 
-   inner class GuestViewHolder(val binding:ItemGuestBinding):RecyclerView.ViewHolder(binding.root)
+    inner class GuestViewHolder(val binding: ItemGuestBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GuestViewHolder {
-        val binding = ItemGuestBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val binding = ItemGuestBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return GuestViewHolder(binding)
     }
 
@@ -29,7 +30,7 @@ class GuestAdapter: RecyclerView.Adapter<GuestAdapter.GuestViewHolder>() {
         }
     }
 
-    override fun getItemCount(): Int =listGuest.size
+    override fun getItemCount(): Int = listGuest.size
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback

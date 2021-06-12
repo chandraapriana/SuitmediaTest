@@ -24,11 +24,11 @@ class GuestEventViewModel : ViewModel() {
         this._nameGuest.postValue(nameGuest)
     }
 
-    fun setNameEvent(nameEvent:String){
+    fun setNameEvent(nameEvent: String) {
         this._nameEvent.postValue(nameEvent)
     }
 
-    fun setDate(date: String?){
+    fun setDate(date: String?) {
         this._date?.postValue(date)
     }
 

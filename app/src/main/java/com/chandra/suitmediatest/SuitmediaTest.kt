@@ -10,7 +10,6 @@ class SuitmediaTest : Application() {
         super.onCreate()
         startKoin {
             androidContext(this@SuitmediaTest)
-//            androidLogger()
             modules(appModule)
         }
     }

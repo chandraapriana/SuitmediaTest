@@ -21,7 +21,7 @@ class GuestFragment : Fragment() {
 
     private lateinit var binding: FragmentGuestBinding
     private val viewModel: GuestViewModel by viewModel()
-    private val guestEventViewModel : GuestEventViewModel by sharedViewModel()
+    private val guestEventViewModel: GuestEventViewModel by sharedViewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -63,8 +63,6 @@ class GuestFragment : Fragment() {
 
 
     }
-
-
 
 
 }

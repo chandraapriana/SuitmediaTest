@@ -4,6 +4,7 @@ import com.chandra.suitmediatest.data.Repository
 import com.chandra.suitmediatest.data.remote.ApiClient
 import com.chandra.suitmediatest.data.remote.RemoteDataSource
 import com.chandra.suitmediatest.ui.guestevent.GuestEventViewModel
+import com.chandra.suitmediatest.ui.guestevent.event.EventViewModel
 import com.chandra.suitmediatest.ui.guestevent.guest.GuestViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -27,6 +28,10 @@ val appModule = module {
 
     viewModel {
         GuestEventViewModel()
+    }
+
+    viewModel {
+        EventViewModel()
     }
 
 }

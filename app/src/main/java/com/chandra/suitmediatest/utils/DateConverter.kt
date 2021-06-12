@@ -4,14 +4,22 @@ import android.annotation.SuppressLint
 import java.text.SimpleDateFormat
 import java.util.*
 
-object DateConverter {
+class DateConverter(date: String) {
     @SuppressLint("SimpleDateFormat")
-    fun getDate(date: String): Int {
-        val format = SimpleDateFormat("yyyy-mm-dd")
-        val dateFormat = format.parse(date)
-        val calendar = Calendar.getInstance(TimeZone.getDefault())
-        calendar.time = dateFormat
-        return calendar.get(Calendar.DATE)
+    private val format = SimpleDateFormat("yyyy-MM-dd")
+    private val dateFormat: Date = format.parse(date)
+    private val calendar: Calendar = Calendar.getInstance(TimeZone.getDefault())
 
+    init {
+        calendar.time = dateFormat
     }
+
+    fun getDate(): Int {
+        return calendar.get(Calendar.DATE)
+    }
+
+    fun getMonth(): Int {
+        return calendar.get(Calendar.MONTH) + 1
+    }
+
 }

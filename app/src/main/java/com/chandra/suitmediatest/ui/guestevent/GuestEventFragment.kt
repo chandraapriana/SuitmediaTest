@@ -8,8 +8,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.chandra.suitmediatest.R
 import com.chandra.suitmediatest.databinding.FragmentGuestEventBinding
-import com.chandra.suitmediatest.ui.guestevent.event.EventFragment
-import com.chandra.suitmediatest.ui.guestevent.guest.GuestFragment
+import com.chandra.suitmediatest.ui.event.EventFragment
+import com.chandra.suitmediatest.ui.guest.GuestFragment
 import com.chandra.suitmediatest.utils.DateConverter
 import com.chandra.suitmediatest.utils.PhoneType
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel

@@ -49,14 +49,18 @@ class GuestEventFragment : Fragment(), View.OnClickListener {
 
         viewModel.date?.observe(viewLifecycleOwner, {
             if (it != null) {
-                val date = DateConverter.getDate(it)
+                val date = DateConverter(it).getDate()
                 val phoneType = PhoneType.getPhoneType(date)
                 Toast.makeText(context, phoneType, Toast.LENGTH_SHORT).show()
             }
         })
 
-        binding.btnEvent.setOnClickListener(this)
-        binding.btnGuest.setOnClickListener(this)
+        binding.apply {
+            btnEvent.setOnClickListener(this@GuestEventFragment)
+            btnGuest.setOnClickListener(this@GuestEventFragment)
+            btnEvent.backgroundTintList = null
+            btnGuest.backgroundTintList = null
+        }
 
     }
 
@@ -66,6 +70,7 @@ class GuestEventFragment : Fragment(), View.OnClickListener {
             R.id.btn_guest -> moveFragment(GuestFragment())
         }
     }
+
 
     private fun moveFragment(fragment: Fragment) {
         parentFragmentManager
@@ -83,6 +88,5 @@ class GuestEventFragment : Fragment(), View.OnClickListener {
         super.onPause()
         viewModel.setDate(null)
     }
-
 
 }

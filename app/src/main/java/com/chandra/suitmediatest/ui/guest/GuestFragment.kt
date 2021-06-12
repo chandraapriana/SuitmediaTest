@@ -1,6 +1,9 @@
 package com.chandra.suitmediatest.ui.guest
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +15,8 @@ import com.chandra.suitmediatest.data.model.Guest
 import com.chandra.suitmediatest.databinding.FragmentGuestBinding
 import com.chandra.suitmediatest.ui.guestevent.GuestEventFragment
 import com.chandra.suitmediatest.ui.guestevent.GuestEventViewModel
+import com.chandra.suitmediatest.utils.DateConverter
+import com.chandra.suitmediatest.utils.PrimeNumber
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -40,6 +45,7 @@ class GuestFragment : Fragment() {
             val guestAdapter = GuestAdapter()
             guestAdapter.setGuest(data)
 
+
             with(binding.rvGuest) {
                 layoutManager = GridLayoutManager(context, 2)
                 setHasFixedSize(true)
@@ -48,20 +54,48 @@ class GuestFragment : Fragment() {
             }
             guestAdapter.setOnItemClickCallback(object : GuestAdapter.OnItemClickCallback {
                 override fun onItemClicked(guest: Guest) {
+
                     guestEventViewModel.setNameGuest(guest.name)
                     guestEventViewModel.setDate(guest.birthdate)
-                    val guestEventFragment = GuestEventFragment()
-                    parentFragmentManager
-                        .beginTransaction()
-                        .replace(R.id.container_main, guestEventFragment)
-                        .addToBackStack(null)
-                        .commit()
+                    checkPrimeNumber(guest.birthdate)
+
                 }
             })
             binding.progressbarGuest.visibility = View.GONE
         }
 
 
+    }
+
+    fun checkPrimeNumber(date: String) {
+        Log.d("prime", date)
+        val month = DateConverter(date).getMonth()
+        Log.d("prime", month.toString())
+        val isPrime = PrimeNumber.checkPrimeNumber(month)
+        if (isPrime) {
+            showDialog(isPrime.toString())
+        } else {
+            showDialog(isPrime.toString())
+        }
+    }
+
+    private fun showDialog(message: String) {
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle("Prime Month")
+        builder.setMessage("The month is $message")
+        builder.setPositiveButton("Continue") { dialogInterface: DialogInterface, i: Int ->
+            moveFragment(GuestEventFragment())
+        }
+        builder.show()
+
+    }
+
+    private fun moveFragment(fragment: Fragment) {
+        parentFragmentManager
+            .beginTransaction()
+            .replace(R.id.container_main, fragment)
+            .addToBackStack(null)
+            .commit()
     }
 
 

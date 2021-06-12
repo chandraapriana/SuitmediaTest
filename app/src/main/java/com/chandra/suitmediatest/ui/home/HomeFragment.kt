@@ -1,5 +1,7 @@
 package com.chandra.suitmediatest.ui.home
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +11,7 @@ import com.chandra.suitmediatest.R
 import com.chandra.suitmediatest.databinding.FragmentHomeBinding
 import com.chandra.suitmediatest.ui.guestevent.GuestEventFragment
 import com.chandra.suitmediatest.ui.guestevent.GuestEventViewModel
+import com.chandra.suitmediatest.utils.Palindrome
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 
@@ -33,18 +36,38 @@ class HomeFragment : Fragment() {
                     edtName.error = "Required"
                 } else {
                     viewModel.setName(edtName.text.toString())
-                    val guestEventFragment = GuestEventFragment()
-                    parentFragmentManager
-                        .beginTransaction()
-                        .replace(R.id.container_main, guestEventFragment)
-                        .addToBackStack(null)
-                        .commit()
+                    isPalindrome(edtName.text.toString())
                 }
-
             }
+            btnNext.backgroundTintList = null
         }
+    }
+
+    private fun isPalindrome(name:String){
+        if (Palindrome.isPalindrome(name)){
+            showDialog("is Palindrome")
+        }else{
+            showDialog("Not Palindrome")
+        }
+    }
+
+    private fun showDialog(message:String){
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle("isPalindrome")
+        builder.setMessage("Your name $message")
+        builder.setPositiveButton("Continue") { dialogInterface: DialogInterface, i: Int ->
+            moveFragment(GuestEventFragment())
+        }
+        builder.show()
 
     }
 
+    private fun moveFragment(fragment:Fragment){
+        parentFragmentManager
+            .beginTransaction()
+            .replace(R.id.container_main, fragment)
+            .addToBackStack(null)
+            .commit()
+    }
 
 }

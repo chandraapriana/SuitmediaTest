@@ -12,11 +12,14 @@ class MainActivity : AppCompatActivity() {
         val activityMainBinding:ActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(activityMainBinding.root)
 
-        val homeFragment = HomeFragment()
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.container_main, homeFragment)
-            .commit()
+        if(savedInstanceState == null){
+            val homeFragment = HomeFragment()
+            supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.container_main, homeFragment)
+                .commit()
+        }
+
     }
 
 

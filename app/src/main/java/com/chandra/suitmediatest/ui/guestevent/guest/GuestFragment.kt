@@ -26,13 +26,13 @@ class GuestFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentGuestBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
+        super.onViewCreated(view, savedInstanceState)
 
         lifecycleScope.launch {
             val data = viewModel.getGuest()
@@ -43,21 +43,23 @@ class GuestFragment : Fragment() {
                 layoutManager = GridLayoutManager(context, 2)
                 setHasFixedSize(true)
                 adapter = guestAdapter
-                guestAdapter.setOnItemClickCallback(object : GuestAdapter.OnItemClickCallback {
-                    override fun onItemClicked(guest: Guest) {
-                        guestEventViewModel.setNameGuest(guest.name)
-                        val guestEventFragment = GuestEventFragment()
-                        parentFragmentManager
-                            .beginTransaction()
-                            .replace(R.id.container_main, guestEventFragment)
-                            .addToBackStack(null)
-                            .commit()
-                    }
-                })
+
             }
+            guestAdapter.setOnItemClickCallback(object : GuestAdapter.OnItemClickCallback {
+                override fun onItemClicked(guest: Guest) {
+                    guestEventViewModel.setNameGuest(guest.name)
+                    guestEventViewModel.setDate(guest.birthdate)
+                    val guestEventFragment = GuestEventFragment()
+                    parentFragmentManager
+                        .beginTransaction()
+                        .replace(R.id.container_main, guestEventFragment)
+                        .addToBackStack(null)
+                        .commit()
+                }
+            })
         }
 
-        super.onViewCreated(view, savedInstanceState)
+
     }
 
 

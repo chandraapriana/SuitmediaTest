@@ -19,14 +19,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:scaleType="fitXY"
-            android:src="@drawable/image1" />
+            android:src="@drawable/image1"
+            android:contentDescription="@string/img_guest" />
     </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nam Do San"
+        android:text="@string/dummy_name_guest"
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"

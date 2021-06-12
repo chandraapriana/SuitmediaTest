@@ -1,6 +1,5 @@
 package com.chandra.suitmediatest.data
 
-import com.chandra.suitmediatest.R
 import com.chandra.suitmediatest.data.model.Guest
 import com.chandra.suitmediatest.data.remote.RemoteDataSource
 import com.chandra.suitmediatest.utils.DataDummy.listImage

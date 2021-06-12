@@ -26,19 +26,24 @@ class HomeFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
+        super.onViewCreated(view, savedInstanceState)
         homeBinding.apply {
             btnNext.setOnClickListener {
-                viewModel.setName(edtName.text.toString())
-                val guestEventFragment = GuestEventFragment()
-                parentFragmentManager
-                    .beginTransaction()
-                    .replace(R.id.container_main, guestEventFragment)
-                    .addToBackStack(null)
-                    .commit()
+                if (edtName.text.isNullOrEmpty()){
+                    edtName.error = "Required"
+                }else{
+                    viewModel.setName(edtName.text.toString())
+                    val guestEventFragment = GuestEventFragment()
+                    parentFragmentManager
+                        .beginTransaction()
+                        .replace(R.id.container_main, guestEventFragment)
+                        .addToBackStack(null)
+                        .commit()
+                }
+
             }
         }
-        super.onViewCreated(view, savedInstanceState)
+
     }
 
 

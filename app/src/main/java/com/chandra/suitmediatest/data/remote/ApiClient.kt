@@ -7,7 +7,7 @@ object ApiClient {
 
     private const val BASE_URL = "http://www.mocky.io/v2/"
 
-    val retrofit = Retrofit.Builder()
+    val retrofit: ApiInterface = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()

@@ -11,7 +11,8 @@
         android:layout_height="150dp"
         android:src="@drawable/image4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/img_guest" />
 
     <TextView
         android:id="@+id/tv_event_name"
@@ -19,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginBottom="10dp"
-        android:text="Supertalk with Superstar Education : Information Technology vs Computer Science"
+        android:text="@string/dummy_title_event"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/tv_event_date"
         app:layout_constraintEnd_toEndOf="parent"

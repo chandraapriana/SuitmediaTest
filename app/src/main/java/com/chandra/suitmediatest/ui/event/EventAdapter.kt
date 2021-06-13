@@ -25,6 +25,7 @@ class EventAdapter : RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
         holder.binding.apply {
             tvEventName.text = event.name
             tvEventDate.text = event.date
+            tvEventDesc.text = event.desc
             Glide.with(holder.itemView.context).load(event.image).into(imgEvent)
             root.setOnClickListener { onItemClickCallback?.onItemClicked(event) }
         }

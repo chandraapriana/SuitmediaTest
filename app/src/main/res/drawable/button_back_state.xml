@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:state_enabled="false"
+        app:backgroundTint="@color/grey"
+        android:backgroundTint="@color/grey"
+        android:drawable="@drawable/btn_backarticle_normal" />
+    <item
+        android:state_pressed="true"
+        android:state_enabled="true"
+        android:backgroundTint="#FFFFFF"
+        app:backgroundTint="#FFFFFF"
+        android:drawable="@drawable/btn_backarticle_selected" />
+</selector>

@@ -5,39 +5,77 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="10dp">
 
+
+    <View
+        android:id="@+id/bg_event"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_list"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/img_event"
         android:layout_width="150dp"
         android:layout_height="150dp"
+        android:contentDescription="@string/img_guest"
         android:src="@drawable/image4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/img_guest" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:textColor="@color/black"
         android:id="@+id/tv_event_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="15dp"
         android:text="@string/dummy_title_event"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/tv_event_date"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/img_event"
-        app:layout_constraintTop_toTopOf="@+id/img_event"
+        app:layout_constraintEnd_toStartOf="@+id/img_event"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
         android:id="@+id/tv_event_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/yellow"
+        android:layout_marginStart="10dp"
+        android:text="Sabtu 12 September 2020"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_event_name" />
+
+
+    <TextView
+        android:id="@+id/bubble"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:background="@color/light_grey"
+        android:padding="2dp"
+        android:text="Nutricia"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_event_date" />
+
+    <TextView
+        android:id="@+id/tv_event_desc"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:text="Sabtu 12 September 2020"
-        app:layout_constraintBottom_toBottomOf="@+id/img_event"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/img_event"
-        app:layout_constraintTop_toBottomOf="@+id/tv_event_name" />
+        android:layout_marginTop="10dp"
+        android:ellipsize="end"
+        android:paddingBottom="10dp"
+        android:maxLines="4"
+        android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorep publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+        app:layout_constraintEnd_toStartOf="@+id/img_event"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bubble" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

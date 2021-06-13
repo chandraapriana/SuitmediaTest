@@ -2,11 +2,13 @@ package com.chandra.suitmediatest.ui.guest
 
 import android.app.AlertDialog
 import android.content.DialogInterface
+import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
@@ -16,6 +18,7 @@ import com.chandra.suitmediatest.databinding.FragmentGuestBinding
 import com.chandra.suitmediatest.ui.guestevent.GuestEventFragment
 import com.chandra.suitmediatest.ui.guestevent.GuestEventViewModel
 import com.chandra.suitmediatest.utils.DateConverter
+import com.chandra.suitmediatest.utils.InternetConnection
 import com.chandra.suitmediatest.utils.PrimeNumber
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
@@ -36,9 +39,32 @@ class GuestFragment : Fragment() {
         return binding.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        loadGuest()
+        refreshApp()
+
+
+    }
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    private fun refreshApp() {
+        binding.swipeToRefresh.setOnRefreshListener {
+            if (InternetConnection.isOnline(requireContext())){
+                loadGuest()
+                Toast.makeText(context, "Refreshed", Toast.LENGTH_SHORT).show()
+            }else{
+                Toast.makeText(context, "No Connection", Toast.LENGTH_SHORT).show()
+            }
+            binding.swipeToRefresh.isRefreshing = false
+        }
+
+
+    }
+
+    private fun loadGuest() {
         lifecycleScope.launch {
             binding.progressbarGuest.visibility = View.VISIBLE
             val data = viewModel.getGuest()
@@ -63,14 +89,10 @@ class GuestFragment : Fragment() {
             })
             binding.progressbarGuest.visibility = View.GONE
         }
-
-
     }
 
     fun checkPrimeNumber(date: String) {
-        Log.d("prime", date)
         val month = DateConverter(date).getMonth()
-        Log.d("prime", month.toString())
         val isPrime = PrimeNumber.checkPrimeNumber(month)
         if (isPrime) {
             showDialog(isPrime.toString())

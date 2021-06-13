@@ -37,6 +37,7 @@ class GuestAdapter : RecyclerView.Adapter<GuestAdapter.GuestViewHolder>() {
     }
 
     fun setGuest(guest: List<Guest>) {
+        this.listGuest.clear()
         this.listGuest.addAll(guest)
     }
 

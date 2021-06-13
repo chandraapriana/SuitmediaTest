@@ -36,6 +36,10 @@ class EventFragment : Fragment() {
             moveFragment(EventMapFragment())
         }
 
+        binding.toolbarEvent.btnBack.setOnClickListener {
+            parentFragmentManager.popBackStack()
+        }
+
         val listEvent = viewModel.getDummyEvent()
         val eventAdapter = EventAdapter()
         eventAdapter.setEvent(listEvent)
@@ -55,7 +59,7 @@ class EventFragment : Fragment() {
         })
     }
 
-    fun moveFragment(fragment: Fragment){
+    fun moveFragment(fragment: Fragment) {
         parentFragmentManager
             .beginTransaction()
             .replace(R.id.container_main, fragment)

@@ -52,10 +52,10 @@ class GuestFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.M)
     private fun refreshApp() {
         binding.swipeToRefresh.setOnRefreshListener {
-            if (InternetConnection.isOnline(requireContext())){
+            if (InternetConnection.isOnline(requireContext())) {
                 loadGuest()
                 Toast.makeText(context, "Refreshed", Toast.LENGTH_SHORT).show()
-            }else{
+            } else {
                 Toast.makeText(context, "No Connection", Toast.LENGTH_SHORT).show()
             }
             binding.swipeToRefresh.isRefreshing = false
@@ -67,7 +67,7 @@ class GuestFragment : Fragment() {
     private fun loadGuest() {
         lifecycleScope.launch {
             binding.progressbarGuest.visibility = View.VISIBLE
-            val data = viewModel.getGuest()
+            var data : List<Guest> = viewModel.getGuest()
             val guestAdapter = GuestAdapter()
             guestAdapter.setGuest(data)
 
@@ -104,7 +104,7 @@ class GuestFragment : Fragment() {
     private fun showDialog(message: String) {
         val builder = AlertDialog.Builder(context)
         builder.setTitle("Prime Month")
-        builder.setMessage("The month is $message")
+        builder.setMessage("is month as a prime number = $message")
         builder.setPositiveButton("Continue") { dialogInterface: DialogInterface, i: Int ->
             moveFragment(GuestEventFragment())
         }

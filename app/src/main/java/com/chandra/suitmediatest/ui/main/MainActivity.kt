@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         if (!InternetConnection.isOnline(this)) {
-            Toast.makeText(this, "Please Turn On Your Internet", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "If First Time Run App, Please Turn On Your Internet For Caching Data", Toast.LENGTH_LONG).show()
         }
 
     }

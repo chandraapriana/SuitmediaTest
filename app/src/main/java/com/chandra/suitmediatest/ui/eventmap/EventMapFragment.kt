@@ -40,6 +40,9 @@ class EventMapFragment : Fragment() {
                 ColorStateList.valueOf(resources.getColor(R.color.yellow))
             btnMaps.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.yellow))
             tvToolbarMessage.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.yellow)))
+            btnBack.setOnClickListener {
+                parentFragmentManager.popBackStack()
+            }
         }
 
         viewPager2 = binding.viewpagerMap

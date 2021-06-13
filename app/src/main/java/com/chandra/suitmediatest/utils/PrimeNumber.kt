@@ -1,7 +1,5 @@
 package com.chandra.suitmediatest.utils
 
-import android.util.Log
-
 object PrimeNumber {
     fun checkPrimeNumber(month: Int): Boolean {
         var prime = true

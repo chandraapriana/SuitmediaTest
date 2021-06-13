@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.chandra.suitmediatest.R
 import com.chandra.suitmediatest.data.model.Event
 import com.chandra.suitmediatest.databinding.FragmentEventBinding
+import com.chandra.suitmediatest.ui.eventmap.EventMapFragment
 import com.chandra.suitmediatest.ui.guestevent.GuestEventFragment
 import com.chandra.suitmediatest.ui.guestevent.GuestEventViewModel
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
@@ -30,6 +31,11 @@ class EventFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.toolbarEvent.btnMaps.setOnClickListener {
+            moveFragment(EventMapFragment())
+        }
+
         val listEvent = viewModel.getDummyEvent()
         val eventAdapter = EventAdapter()
         eventAdapter.setEvent(listEvent)
@@ -43,14 +49,18 @@ class EventFragment : Fragment() {
         eventAdapter.setOnItemClickCallback(object : EventAdapter.OnItemClickCallback {
             override fun onItemClicked(event: Event) {
                 guestEventViewModel.setNameEvent(event.name)
-                val guestEventFragment = GuestEventFragment()
-                parentFragmentManager
-                    .beginTransaction()
-                    .replace(R.id.container_main, guestEventFragment)
-                    .addToBackStack(null)
-                    .commit()
+                moveFragment(GuestEventFragment())
+
             }
         })
+    }
+
+    fun moveFragment(fragment: Fragment){
+        parentFragmentManager
+            .beginTransaction()
+            .replace(R.id.container_main, fragment)
+            .addToBackStack(null)
+            .commit()
     }
 
 }

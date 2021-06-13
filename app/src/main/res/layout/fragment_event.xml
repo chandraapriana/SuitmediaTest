@@ -6,19 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".ui.event.EventFragment">
 
-    <TextView
+    <include
         android:id="@+id/toolbar_event"
+        layout="@layout/toolbar_event" />
+
+    <View
+        android:id="@+id/line"
         android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
+        android:layout_height="1dp"
         android:background="@color/grey"
-        android:gravity="center"
-        android:text="@string/event"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_event" />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_event"
@@ -29,7 +27,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_event"
+        app:layout_constraintTop_toBottomOf="@+id/line"
         tools:listitem="@layout/item_event" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
